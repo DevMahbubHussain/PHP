@@ -30,18 +30,21 @@ try {
     //Recipients
     $mail->setFrom('mahbubhussaincse@gmail.com', 'Mahbub');// from which mail sent this main
     $mail->addAddress('devmahbubmamun@gmail.com', 'Mahbub Hussain User');     //Add a recipient
-    $mail->Body = 'This is a test message';
-    // $mail->addAddress('ellen@example.com');               //Name is optional
-    // $mail->addReplyTo('info@example.com', 'Information');
-    $mail->addCC('mahbubhussaincse@gmail.com');
-    // $mail->addBCC('bcc@example.com');
 
-    //Content
-    $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = 'Here is the subject';
-    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
-    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    //content
+    $mail->isHTML(true);  
+    $mail->Subject = 'An Email sent From Mahbub Hussain';
+    $mail->Body    = 'Please take a look this email as soon as possible';
 
+    // reply option
+    $mail->addReplyTo('info@example.com', 'Information');
+
+    // cc & bcc 
+    $mail->addCC('sylheteducation@gmail.com');
+    $mail->addBCC('devmahbub@gmail.com');
+
+    //  attachment
+    $mail->addAttachment(dirname(__FILE__) . '/example.pdf');
   
 
 $mail->send();
