@@ -12,10 +12,7 @@ require 'vendor/phpmailer/phpmailer/src/SMTP.php';
 include_once __DIR__ .'/vendor/autoload.php';
 
 
-
 $mail = new PHPMailer(true);
-
-
 try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
@@ -26,6 +23,7 @@ try {
     $mail->Password   = Config::SMTP_PASSWORD;                              //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
     $mail->Port       = Config::SMTP_PORT;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    $mail->CharSet = 'UTF-8';
 
     //Recipients
     $mail->setFrom('mahbubhussaincse@gmail.com', 'Mahbub');// from which mail sent this main
@@ -33,8 +31,15 @@ try {
 
     //content
     $mail->isHTML(true);  
-    $mail->Subject = 'An Email sent From Mahbub Hussain';
-    $mail->Body    = 'Please take a look this email as soon as possible';
+    $mail->Subject = '<h3>An Email sent From Mahbub Hussain<h3>';
+    // $mail->Body    = '<h2>Please take a look this email as soon as possible</h2>'
+    $mail->Body = '<h2>Please take a look this email as soon as possible</h2>'
+             . '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Red_Apple.jpg/265px-Red_Apple.jpg">'
+             . "\n"
+             . '<p style="color: #f00;">This is an email with some <span style="color: #0f0">CSS styles</span>.</p>';
+    $mail->AddEmbeddedImage(dirname(__FILE__) . '/banana.png', 'banana');
+    $mail->AltBody = "Hello.\nThis is the body in plain text for non-HTML mail clients";
+    
 
     // reply option
     $mail->addReplyTo('info@example.com', 'Information');
