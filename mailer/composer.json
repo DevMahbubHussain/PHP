@@ -1,0 +1,19 @@
+{
+    "name": "mahbub/phpmailer",
+    "description": "All About PHPMAILER",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\Mahbub\\Phpmailer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mahbub Hussain"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.8"
+    }
+}
